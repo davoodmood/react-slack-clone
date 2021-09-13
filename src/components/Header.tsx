@@ -96,6 +96,3 @@ const HeaderAvatar = styled(Avatar)`
         opacity: 0.8;
     }
 `;
-const HeaderSearch = styled.div`
-
-`;

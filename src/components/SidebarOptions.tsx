@@ -2,7 +2,9 @@ import { SvgIconTypeMap } from '@material-ui/core';
 import { OverridableComponent } from '@material-ui/core/OverridableComponent';
 import {FC} from 'react'
 import styled from 'styled-components';
-import {db} from '../firebase'
+import {db} from '../firebase';
+import {useDispatch} from 'react-redux';
+import { enterRoom } from '../features/appSlice';
 
 
 interface Props {
@@ -14,6 +16,7 @@ interface Props {
 
 const SidebarOptions: FC<Props> = ({Icon, title, addChannelOption, id}: Props) => {
 
+    const dispatch = useDispatch();
    
 
     const addChannel = async() => {
@@ -30,7 +33,15 @@ const SidebarOptions: FC<Props> = ({Icon, title, addChannelOption, id}: Props) =
             }
         }
     }
-    const selectChannel = () => {}
+    const selectChannel = () => {
+        if (id) {
+            // push to store
+            dispatch(enterRoom({
+                roomId: id
+            }));
+            console.log("Channel ID: ", id);
+        }
+    }
 
     return (
         <SidebarOptionContainer

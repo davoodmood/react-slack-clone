@@ -1,23 +1,49 @@
 import { Button } from '@material-ui/core';
-import React from 'react'
+import React, { useState } from 'react'
 import styled  from 'styled-components';
+import {db} from '../firebase';
+import firebase from 'firebase';
+
 
 interface props {
     channelName?: string|null;
     channelId?: string|null;
+    chatRef?: any
 };
 
-function ChatInput({channelName, channelId}: props) {
+function ChatInput({channelName, channelId, chatRef}: props) {
+    const [input, setInput] = useState('');
+
     const sendMessage = (e: any) => {
         e.preventDefault();
-        console.log("Sent Message: ", e)
 
+        
+
+        if (!channelId) return;
+
+        db.collection('rooms').doc(channelId).collection('messages').add({
+            message: input,
+            timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+            user:'David',
+            userImage: 'https://pbs.twimg.com/profile_images/631682025586470913/fWe7NLN1.jpg'
+        });
+
+        chatRef?.current?.scrollIntoView({
+            behavior: 'smooth'
+        });
+
+        setInput('');
     }
 
     return (
         <ChatInputContainer>
             <form>
-                <input type="text" placeholder={`Message #Room`}/>
+                <input value={input} 
+                onChange={e => {
+                    setInput(e.target.value)
+                }}
+                disabled={!channelName}
+                type="text" placeholder={`${channelName !== undefined? `Message to #${channelName}` : 'Select a #CHANNEL to send message'}`}/>
                 <Button hidden type="submit" onClick={sendMessage}>
                     Send
                 </Button>

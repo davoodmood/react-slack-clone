@@ -4,8 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Preview
 
-Click the button bellow to preview the [live demo](https://react-slack-clone-delta.vercel.app/) on the Vercel Deployment:
-[![Preview](https://vercel.com/button)](https://react-slack-clone-delta.vercel.app/)
+Preview the [live demo](https://react-slack-clone-delta.vercel.app/)
 
 ## Setting up and Configuring
 

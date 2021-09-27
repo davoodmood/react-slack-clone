@@ -1,4 +1,4 @@
-import React,{FC} from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord'
 import CreateIcon from '@material-ui/icons/Create'
@@ -18,7 +18,7 @@ function Sidebar() {
     //     return querySnapshot
     // }
     // getDocuments()
-    const [channels, loading, error] = useCollection(db.collection('rooms'));
+    const [channels] = useCollection(db.collection('rooms'));
     // getDocuments.forEach((doc: any) => {
     //     console.log(`${doc.id} => ${doc.data()}`);
     //   });

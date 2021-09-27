@@ -1,6 +1,6 @@
 import React, {useRef, useEffect} from 'react';
 import styled  from 'styled-components';
-import { InfoOutlined, Message, StarBorderOutlined } from '@material-ui/icons';
+import { InfoOutlined, StarBorderOutlined } from '@material-ui/icons';
 import ChatInput from './ChatInput';
 import {useSelector} from 'react-redux';
 import { selectRoomId } from '../features/appSlice';
